@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto MoneTag Ads</title>
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .stats {
+            margin: 10px 0;
+        }
+        .progress {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 5px solid #4CAF50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+            font-size: 18px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Auto MoneTag Ads</h2>
+        <button class="btn">INCOME BD 25</button>
+        <p>Welcome, <b>@exampleUser</b></p>
+        <div class="stats">
+            Watched Ads: <span id="watchedCount">160</span><br>
+            Earned Points: <span id="earnedPoints">16.00</span>
+        </div>
+        <div class="progress" id="progress">0%</div>
+        <button class="btn" onclick="showAd()">Watch Ad</button>
+        <button class="btn">Withdraw</button>
+    </div>
+
+    <script>
+        let watchedAds = 160;
+        let earnedPoints = 16.00;
+
+        function showAd() {
+            console.log("Loading Monetag Ad...");
+
+            // Remove previous script if exists
+            let oldScript = document.getElementById('monetag-script');
+            if (oldScript) oldScript.remove();
+
+            // Create new script for Monetag ad
+            let script = document.createElement('script');
+            script.src = "//whephiwums.com/sdk.js";
+            script.setAttribute('data-zone', '9066213');
+            script.setAttribute('data-sdk', 'show_9066213');
+            script.id = "monetag-script";
+            document.body.appendChild(script);
+
+            console.log("New Monetag script added.");
+
+            // Simulate ad watched after delay
+            setTimeout(() => {
+                watchedAds++;
+                earnedPoints += 0.1;
+                document.getElementById('watchedCount').innerText = watchedAds;
+                document.getElementById('earnedPoints').innerText = earnedPoints.toFixed(2);
+                document.getElementById('progress').innerText = "?";
+                console.log("Ad watched and points updated!");
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>
